@@ -1,1 +1,0 @@
-[{"className":"Asset","id":29721718,"dblWeightedPrice":0,"strDescription":"QR Labeling Machine","strMake":"LABEL CORP ORG","strModel":"X TURBO 1000","strName":"Labeling QR1","strAddressParsed":"","dirty":false,"new":false,"uideleted":false}]
