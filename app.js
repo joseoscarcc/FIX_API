@@ -19,10 +19,14 @@ app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html');
 });
 
+
+
 // Handle the form submission
 app.post('/process-form', (req, res) => {
   const selectedItems = req.body.items; // Assuming the checkboxes have a name of "items"
-  const idname = req.body.idname; // Retrieve the value of the input field named "idname"
+  const idname = parseInt(req.body.idname);// Retrieve the value of the input field named "idname"
+
+  const fieldsString = selectedItems.join(',');
 
   // Modify the fiixCmmsClient.find() call to fetch the query results
   fiixCmmsClient.find({
@@ -30,7 +34,7 @@ app.post('/process-form', (req, res) => {
     filters: [
       { ql: 'id = ?', parameters: [idname] }
     ],
-    fields: selectedItems.filter(field => field !== '').join(', '), // Filter out empty fields
+    fields: fieldsString,
     callback: function(ret) {
       if (!ret.error) {
         const objects = ret.objects.slice(0, 5); // Retrieve the first 5 objects from the result
